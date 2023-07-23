@@ -13,6 +13,7 @@ public class RaycastAgent : Agent
     public override void Initialize()
     {
         rBody = GetComponent<Rigidbody>();
+        // Debug.Log("Start");
     }
 
     public override void OnEpisodeBegin()
@@ -41,12 +42,12 @@ public class RaycastAgent : Agent
         this.rBody.AddForce(dirToGo * 0.4f, ForceMode.VelocityChange);
 
         float distanceToTarget = Vector3.Distance(
-        this.transform.localPosition, target.localPosition); 
+            this.transform.localPosition, target.localPosition); 
         if (distanceToTarget < 1.42f)
-       {
+        {
             AddReward(1.0f);
             EndEpisode();
-       }
+        }
         if (this.transform.localPosition.y < 0)
         {
             EndEpisode();
